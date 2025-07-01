@@ -359,31 +359,33 @@ console.log(people); // you can remove it
 
 const table = document.querySelector('.dashboard tbody');
 
-people.forEach((person) => {
-  const row = document.createElement('tr');
+if (table) {
+  people.forEach((person) => {
+    const row = document.createElement('tr');
 
-  const data = [
-    person.name,
-    person.sex,
-    person.born,
-    person.died,
-    person.died - person.born,
-    Math.ceil(person.died / 100),
-  ];
+    const data = [
+      person.name,
+      person.sex,
+      person.born,
+      person.died,
+      person.died - person.born,
+      Math.ceil(person.died / 100),
+    ];
 
-  data.forEach((param) => {
-    const cell = document.createElement('td');
+    data.forEach((param) => {
+      const cell = document.createElement('td');
 
-    if (param === 'm') {
-      cell.textContent = 'Male';
-    } else if (param === 'f') {
-      cell.textContent = 'Female';
-    } else {
-      cell.textContent = param;
-    }
+      if (param === 'm') {
+        cell.textContent = 'Male';
+      } else if (param === 'f') {
+        cell.textContent = 'Female';
+      } else {
+        cell.textContent = param;
+      }
 
-    row.appendChild(cell);
+      row.appendChild(cell);
+    });
+
+    table.appendChild(row);
   });
-
-  table.appendChild(row);
-});
+}
